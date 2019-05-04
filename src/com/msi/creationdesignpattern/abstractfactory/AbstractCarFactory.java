@@ -1,6 +1,20 @@
 package com.msi.creationdesignpattern.abstractfactory;
 
-public interface AbstractCarFactory<T> {
+public class AbstractCarFactory {
 
-	public abstract T create();
+	public Car getCar(CarType type, int speadPerHour, double price) {
+		Car car = null;
+		switch (type) {
+		case TRUCK:
+			car = (Car) new TruckFactory(speadPerHour, price).create();
+			break;
+		case TAXI:
+			car = (Car) new TaxiFactory(speadPerHour, price).create();
+			break;
+		default:
+			break;
+		}
+		return car;
+	}
+
 }

@@ -66,7 +66,7 @@ Abstract Factory design pattern deals with the factories of factory. In factory 
 Let's take a look at the code.
 
 ```xml
-public interface AbstractCarFactory<T> {
+public interface CarFactory<T> {
 
 	public abstract T create();
 }
@@ -133,7 +133,7 @@ Factory that will decide which factory to call-
 
 ```xml
 
-public class CarFactory {
+public class AbstractCarFactory {
 
 	public Car getCar(CarType type, int speadPerHour, double price) {
 		Car car = null;

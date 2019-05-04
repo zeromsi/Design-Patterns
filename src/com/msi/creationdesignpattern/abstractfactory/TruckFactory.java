@@ -1,6 +1,6 @@
 package com.msi.creationdesignpattern.abstractfactory;
 
-public class TruckFactory implements AbstractCarFactory<Truck> {
+public class TruckFactory implements CarFactory<Truck> {
 	private int speedPerHour;
 	private double price;
 

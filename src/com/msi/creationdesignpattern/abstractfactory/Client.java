@@ -3,7 +3,7 @@ package com.msi.creationdesignpattern.abstractfactory;
 public class Client {
 
 	public static void main(String[] args) {
-		CarFactory factory = new CarFactory();
+		AbstractCarFactory factory = new AbstractCarFactory();
 		Car carOne = factory.getCar(CarType.TAXI, 30, 120000);
 		System.out.println(carOne.create());
 
