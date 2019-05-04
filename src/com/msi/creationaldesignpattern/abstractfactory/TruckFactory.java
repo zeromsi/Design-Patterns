@@ -1,4 +1,4 @@
-package com.msi.creationdesignpattern.abstractfactory;
+package com.msi.creationaldesignpattern.abstractfactory;
 
 public class TruckFactory implements CarFactory<Truck> {
 	private int speedPerHour;

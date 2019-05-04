@@ -5,4 +5,4 @@
  * @author zeromsi
  *
  */
-package com.msi.creationdesignpattern;
+package com.msi.creationaldesignpattern;

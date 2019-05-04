@@ -1,4 +1,4 @@
-package com.msi.creationdesignpattern.abstractfactory;
+package com.msi.creationaldesignpattern.abstractfactory;
 
 public interface CarFactory<T> {
 

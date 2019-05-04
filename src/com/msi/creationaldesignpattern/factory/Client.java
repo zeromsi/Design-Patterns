@@ -1,9 +1,9 @@
-package com.msi.creationdesignpattern.abstractfactory;
+package com.msi.creationaldesignpattern.factory;
 
 public class Client {
 
 	public static void main(String[] args) {
-		AbstractCarFactory factory = new AbstractCarFactory();
+		CarFactory factory = new CarFactory();
 		Car carOne = factory.getCar(CarType.TAXI, 30, 120000);
 		System.out.println(carOne.create());
 

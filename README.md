@@ -213,6 +213,92 @@ com.msi.creationdesignpattern.singleton.Car@135fbaa4
 ```
 
 4. Builder
+The purpose of builder design pattern is to element the need of telescoping constructors or multiple constructors. Another fact is that a constructor may take huge number of parameter which is difficult to track.   
+
+Let's take a look to the code,
+
+```xml
+
+public class Car {
+	
+	public static class Builder{
+		private String brand;
+		private String type;
+		private String model;
+		
+		public Builder() {
+		}
+		
+		public Car build() {
+			return new Car(this);
+		}
+		
+		public Builder brand(Brand brand) {
+			this.brand=brand.name();
+			return this;
+		}
+		
+		public Builder type(Type type) {
+			this.type=type.name();
+			return this;
+		}
+		
+		public Builder model(Model model) {
+			this.model=model.name();
+			return this;
+		}
+		
+	}
+	
+	private String brand;
+	private String type;
+	private String model;
+	
+	
+	public Car(Builder builder) {
+		this.brand=builder.brand;
+		this.type=builder.type;
+		this.model=builder.model;
+	}
+	
+	public String getBrand() {
+		return brand;
+	}
+	public String getType() {
+		return type;
+	}
+	public String getModel() {
+		return model;
+	}
+
+	@Override
+	public String toString() {
+		return "Car [brand=" + brand + ", type=" + type + ", model=" + model + "]";
+	}
+
+
+}
+```
+In this car class there is a public static inner class ``` Builder ```. It has methods to set variables value which returns object as the purpose is to make object ```immutable```. There's a ``` build ``` method that returns car type and calls Car constructor that takes Builder as parameter. 
+
+Client-
+
+```xml
+
+public class Client {
+
+	public static void main(String[] args) {
+		Car.Builder car=new Car.Builder()
+				.brand(Brand.AUDI)
+				.model(Model.M001)
+				.type(Type.SPORTSCAR);
+		System.out.println(car.build());
+	}
+
+}
+
+``` 
+
 4. Object Pool
 5. Prototype and
 

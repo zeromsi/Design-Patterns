@@ -1,4 +1,4 @@
-package com.msi.creationdesignpattern.singleton;
+package com.msi.creationaldesignpattern.singleton;
 
 public class Car {
 	

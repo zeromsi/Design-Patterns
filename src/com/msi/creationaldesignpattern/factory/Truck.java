@@ -1,21 +1,21 @@
-package com.msi.creationdesignpattern.factory;
+package com.msi.creationaldesignpattern.factory;
 
-public class Taxi implements Car<Taxi> {
+public class Truck implements Car<Truck> {
 	private int speedPerHour;
 	private double price;
 	private String name;
 	private boolean ifItsPermitted;
 
-	public Taxi(int speedPerHour, double price) {
+	public Truck(int speedPerHour, double price) {
 		super();
 		this.speedPerHour = speedPerHour;
 		this.price = price;
 	}
 
 	@Override
-	public Taxi create() {
-		this.name="Taxi";
-		if(this.speedPerHour>40) {
+	public Truck create() {
+		this.name="Truck";
+		if(this.speedPerHour>30) {
 			this.ifItsPermitted=false;
 		}else {
 			this.ifItsPermitted=true;
@@ -25,10 +25,8 @@ public class Taxi implements Car<Taxi> {
 
 	@Override
 	public String toString() {
-		return "Taxi [speedPerHour=" + speedPerHour + ", price=" + price + ", name=" + name + ", ifItsPermitted="
+		return "Truck [speedPerHour=" + speedPerHour + ", price=" + price + ", name=" + name + ", ifItsPermitted="
 				+ ifItsPermitted + "]";
 	}
-
-	
 
 }
