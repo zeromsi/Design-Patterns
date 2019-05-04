@@ -156,6 +156,62 @@ public class AbstractCarFactory {
 
 
 3. Singleton
+
+Singleton design pattern aims at ``` one object at a time  ``` of a class or bean. That means, a singleton class will be static in nature and thread safe. The constructor of a singleton class will be default and private. 
+
+Let's take a look at the code,
+
+```xml
+
+public class Car {
+	
+	private static volatile Car instance=null;
+	
+	private Car() {}
+	
+	public static Car getInstance() {
+		if(instance==null) {
+			synchronized (Car.class) {
+				if(instance==null) {
+					instance=new Car();
+				}
+			}
+		}
+		return instance;
+	}
+	
+
+}
+
+
+```
+Here, ``` private static volatile Car instance=null; ``` in this line the variable is set to volatile and static. The keyword ``` volatile ``` will keep the instance up to date by updating cache. The ``` synchronized ``` block will prevent other thread to update instance when one thread is having operation by locking program inside the block.
+
+Client- 
+
+```xml 
+public class Client {
+
+	public static void main(String[] args) {
+		Car objectOne = Car.getInstance();
+		Car objectTwo = Car.getInstance();
+		Car objectThree = Car.getInstance();
+		System.out.println(objectOne);
+		System.out.println(objectTwo);
+		System.out.println(objectThree);
+	}
+	
+}
+```
+output-
+
+```xml
+com.msi.creationdesignpattern.singleton.Car@135fbaa4
+com.msi.creationdesignpattern.singleton.Car@135fbaa4
+com.msi.creationdesignpattern.singleton.Car@135fbaa4
+
+```
+
 4. Builder
 4. Object Pool
 5. Prototype and
