@@ -4,7 +4,12 @@ public class Car implements Cloneable{
 	
 	private static volatile Car instance=null;
 	
-	private Car() {}
+	
+	private Car() {
+		if (instance != null) {
+			throw new RuntimeException("Instance already initialized. Please call getInstance()");
+		}
+	}
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		return instance;
