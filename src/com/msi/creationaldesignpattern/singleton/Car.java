@@ -1,6 +1,8 @@
 package com.msi.creationaldesignpattern.singleton;
 
-public class Car implements Cloneable{
+import java.io.Serializable;
+
+public class Car implements Cloneable,Serializable{
 	
 	private static volatile Car instance=null;
 	
@@ -10,8 +12,27 @@ public class Car implements Cloneable{
 			throw new RuntimeException("Instance already initialized. Please call getInstance()");
 		}
 	}
+	
+	protected Object readResolve() {
+		if(instance==null) {
+			synchronized (Car.class) {
+				if(instance==null) {
+					instance=new Car();
+				}
+			}
+		}
+		return instance;
+	}
+	
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
+		if(instance==null) {
+			synchronized (Car.class) {
+				if(instance==null) {
+					instance=new Car();
+				}
+			}
+		}
 		return instance;
 	}
 	
