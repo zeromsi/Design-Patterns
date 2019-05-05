@@ -1,10 +1,14 @@
 package com.msi.creationaldesignpattern.singleton;
 
-public class Car {
+public class Car implements Cloneable{
 	
 	private static volatile Car instance=null;
 	
 	private Car() {}
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return instance;
+	}
 	
 	public static Car getInstance() {
 		if(instance==null) {
