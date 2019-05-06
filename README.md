@@ -13,56 +13,56 @@ Creational design pattern deals with object creation. In general, we used to cre
 
 According to the ```(GOF)``` There are six creational design patterns.
 
-1. Factor-
-In a factory design pattern, a client requests a common factory class method with a type and necessary data. That method either uses switch case or if-else statements to initialize requested class by type and returns.
-
-Lets explore an implementation,
-
-
-```xml
-public class Client {
-
-	public static void main(String[] args) {
-		CarFactory factory = new CarFactory();
-		Car carOne = factory.getCar(CarType.TAXI, 30, 120000);
-		System.out.println(carOne.create());
-
-		Car carTwo = factory.getCar(CarType.TRUCK, 40, 400000);
-		System.out.println(carTwo.create());
+##### 1. Factory-
+	In a factory design pattern, a client requests a common factory class method with a type and necessary data. That method either uses switch case or if-else statements to initialize requested class by type and returns.
+	
+	Lets explore an implementation,
+	
+	
+	```xml
+	public class Client {
+	
+		public static void main(String[] args) {
+			CarFactory factory = new CarFactory();
+			Car carOne = factory.getCar(CarType.TAXI, 30, 120000);
+			System.out.println(carOne.create());
+	
+			Car carTwo = factory.getCar(CarType.TRUCK, 40, 400000);
+			System.out.println(carTwo.create());
+		}
+		
+	}
+	```
+	Here ``` getCar ``` method of ``` CarFactory ``` class is called to initialize due object. 
+	
+	```xml
+	
+	public class CarFactory {
+	
+		public Car getCar(CarType type, int speadPerHour, double price) {
+			Car car = null;
+			switch (type) {
+			case TRUCK:
+				car = new Truck(speadPerHour, price);
+				break;
+			case TAXI:
+				car = new Taxi(speadPerHour, price);
+				break;
+			default:
+				break;
+			}
+			return car;
+		}
+	
 	}
 	
-}
-```
-Here ``` getCar ``` method of ``` CarFactory ``` class is called to initialize due object. 
+	```
+	
+	Here ` CarFactory ` is the factory class. I've used switch case to make decision.
 
-```xml
-
-public class CarFactory {
-
-	public Car getCar(CarType type, int speadPerHour, double price) {
-		Car car = null;
-		switch (type) {
-		case TRUCK:
-			car = new Truck(speadPerHour, price);
-			break;
-		case TAXI:
-			car = new Taxi(speadPerHour, price);
-			break;
-		default:
-			break;
-		}
-		return car;
-	}
-
-}
-
-```
-
-Here ``` CarFactory ``` is the factory class. I've used switch case to make decision.
-
-2. Abstract Factory-
+##### 2. Abstract Factory-
 Abstract Factory design pattern deals with the factories of factory. In factory design pattern We'd only one factory class which is common for all but in abstract factory we will create factory for all class. The advantage is that, if we need to add new bean type, we will just plug and play.
-
+	
 Let's take a look at the code.
 
 ```xml
@@ -155,9 +155,9 @@ public class AbstractCarFactory {
 ```
 
 
-3. Singleton-
+##### 3. Singleton-
 
-Singleton design pattern aims at ``` one object at a time  ``` of a class or bean. That means, a singleton class will be static in nature and thread safe. The constructor of a singleton class will be default and private. 
+Singleton design pattern aims at ` one object at a time  ` of a class or bean. That means, a singleton class will be static in nature and thread safe. The constructor of a singleton class will be default and private. 
 
 Let's take a look at the code,
 
@@ -185,7 +185,7 @@ public class Car {
 
 
 ```
-Here, ``` private static volatile Car instance=null; ``` in this line the variable is set to volatile and static. The keyword ``` volatile ``` will keep the instance up to date by updating cache. The ``` synchronized ``` block will prevent other thread to update instance when one thread is having operation by locking program inside the block.
+Here, ` private static volatile Car instance=null; ` in this line the variable is set to volatile and static. The keyword ` volatile ` will keep the instance up to date by updating cache. The ` synchronized ` block will prevent other thread to update instance when one thread is having operation by locking program inside the block.
 
 Client- 
 
@@ -212,7 +212,7 @@ com.msi.creationdesignpattern.singleton.Car@135fbaa4
 
 ```
 
-4. Builder-
+##### 4. Builder-
 The purpose of builder design pattern is to element the need of telescoping constructors or multiple constructors. Another fact is that a constructor may take huge number of parameter which is difficult to track.   
 
 Let's take a look to the code,
@@ -279,12 +279,11 @@ public class Car {
 
 }
 ```
-In this car class there is a public static inner class ``` Builder ```. It has methods to set variables value which returns object as the purpose is to make object ```immutable```. There's a ``` build ``` method that returns car type and calls Car constructor that takes Builder as parameter. 
+In this car class there is a public static inner class ` Builder `. It has methods to set variables value which returns object as the purpose is to make object `immutable`. There's a ` build ` method that returns car type and calls Car constructor that takes Builder as parameter. 
 
 Client-
 
-```xml
-
+```
 public class Client {
 
 	public static void main(String[] args) {
@@ -294,13 +293,18 @@ public class Client {
 				.type(Type.SPORTSCAR);
 		System.out.println(car.build());
 	}
-
 }
+```
 
-``` 
+##### 5. Object Pool
+##### 6. Prototype and
+##### 7. Flyweight Pattern
+**Motivation**
+* Sharing a fine grained Object to reduce the creation of large number of objects instantiated with same properties.
 
-4. Object Pool
-5. Prototype and
+
+* The Motif GUI used this strategy to replace heavy weight widgets with light weight gadgets.
+
 
 
 #### Structural and 
