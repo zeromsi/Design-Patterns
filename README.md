@@ -19,7 +19,7 @@ According to the ```(GOF)``` There are six creational design patterns.
 	Lets explore an implementation,
 	
 	
-	```xml
+	```
 	public class Client {
 	
 		public static void main(String[] args) {
@@ -35,7 +35,7 @@ According to the ```(GOF)``` There are six creational design patterns.
 	```
 	Here ``` getCar ``` method of ``` CarFactory ``` class is called to initialize due object. 
 	
-	```xml
+	```
 	
 	public class CarFactory {
 	
